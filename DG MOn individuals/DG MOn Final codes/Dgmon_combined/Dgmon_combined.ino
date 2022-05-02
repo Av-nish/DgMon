@@ -480,15 +480,15 @@ float getVPP(char c)
     //    readValue = analogRead(sensorIn);
        if (c == 'r')
         {
-            readValue = mux();                  // enter channel no
+            readValue = mux(3);                  // enter channel no
         }  
         if (c == 'y')
         {
-            readValue = mux();                  // enter channel no
+            readValue = mux(4);                  // enter channel no
         }  
         if (c == 'b')
         {
-            readValue = mux();                  // enter channel no
+            readValue = mux(5);                  // enter channel no
         }  
        // see if you have a new maxValue
        if (readValue > maxValue) 
