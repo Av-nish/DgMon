@@ -4,7 +4,7 @@
 #include <OneWire.h> 
 #include <DallasTemperature.h>
 
-int muxOut = 0;
+
 int vibr_Pin = 2;  // Enter Vibration sensor pin number
 
 // For DC Voltage
