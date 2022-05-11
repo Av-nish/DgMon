@@ -185,11 +185,10 @@ void loop()
     // call functions 
     
 getTemperature(0);
-//mux(0)
-getVoltage('y');
-delay(600);
-getVoltage('b');
-delay(600);
+//getVoltage('y');
+//delay(600);
+//getVoltage('b');
+//delay(600);
 
 
 
@@ -508,4 +507,3 @@ float getVPP(char c)
       
    return result;
  }
-
