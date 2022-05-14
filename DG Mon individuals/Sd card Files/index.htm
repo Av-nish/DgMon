@@ -23,13 +23,22 @@
 				if (this.readyState == 4) {
 					if (this.status == 200) {
 						if (this.responseXML != null) {
-							document.getElementById("input1").innerHTML = this.responseXML.getElementsByTagName('analog1')[0].childNodes[0].nodeValue;
-							document.getElementById("input0").innerHTML = this.responseXML.getElementsByTagName('analog0')[0].childNodes[0].nodeValue;
-							document.getElementById("input8").innerHTML = this.responseXML.getElementsByTagName('D2')[0].childNodes[0].nodeValue;  //Onboard Temperature
+							// document.getElementById("input1").innerHTML = this.responseXML.getElementsByTagName('analog1')[0].childNodes[0].nodeValue;
+							// document.getElementById("input0").innerHTML = this.responseXML.getElementsByTagName('analog0')[0].childNodes[0].nodeValue;
+							// document.getElementById("input8").innerHTML = this.responseXML.getElementsByTagName('D2')[0].childNodes[0].nodeValue;  //Onboard Temperature
 
-							data_val1 = this.responseXML.getElementsByTagName('analog1')[0].childNodes[0].nodeValue;
-							data_val0 = this.responseXML.getElementsByTagName('analog0')[0].childNodes[0].nodeValue;
-							data_val8 = this.responseXML.getElementsByTagName('D2')[0].childNodes[0].nodeValue;
+							tempOnboard = this.responseXML.getElementsByTagName('tempOnboard')[0].childNodes[0].nodeValue;
+							tempCoolant = this.responseXML.getElementsByTagName('tempCoolant')[0].childNodes[0].nodeValue;
+							tempEngineOil = this.responseXML.getElementsByTagName('tempEngineOil')[0].childNodes[0].nodeValue;
+							v_r = this.responseXML.getElementsByTagName('v_r')[0].childNodes[0].nodeValue;
+							v_y = this.responseXML.getElementsByTagName('v_y')[0].childNodes[0].nodeValue;
+							v_b = this.responseXML.getElementsByTagName('v_b')[0].childNodes[0].nodeValue;
+							fuel = this.responseXML.getElementsByTagName('fuel')[0].childNodes[0].nodeValue;
+							i_r = this.responseXML.getElementsByTagName('i_r')[0].childNodes[0].nodeValue;
+							i_y = this.responseXML.getElementsByTagName('i_y')[0].childNodes[0].nodeValue;
+							i_b = this.responseXML.getElementsByTagName('i_b')[0].childNodes[0].nodeValue;
+							vibration = this.responseXML.getElementsByTagName('vibration')[0].childNodes[0].nodeValue;
+
 
 
 						}
@@ -53,37 +62,37 @@
 
 		<div id='d0' style="position:absolute; top:10px; left:10px; z-index:1">  
 			<p>&emsp;&emsp;&emsp;&emsp;Voltage R : <span id="input0"></span></p>
-			<canvas id="an_	gauge_0" data-major-ticks="0 100 200 300 400 500 600 700 800 900 1000 1023" data-type="canv-gauge" data-min-value="0" data-max-value="1023" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_0').setValue(data_val0);}, 200);"></canvas>		
+			<canvas id="an_	gauge_0" data-major-ticks="0 100 200 300 400 500 600 700 800 900 1000 1023" data-type="canv-gauge" data-min-value="0" data-max-value="1023" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_0').setValue(v_r);}, 200);"></canvas>		
 		</div>	
 
 		<div id='d1' style="position:absolute; top:10px; left:340px; z-index:1">  
 			<p>&emsp;&emsp;&emsp;&emsp;Voltage Y : <span id="input1"></span></p>
-			<canvas id="an_gauge_1" data-major-ticks="0 100 200 300 400 500 600 700 800 900 1000 1023" data-type="canv-gauge" data-min-value="0" data-max-value="1023" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_1').setValue(data_val1);}, 200);"></canvas>		
+			<canvas id="an_gauge_1" data-major-ticks="0 100 200 300 400 500 600 700 800 900 1000 1023" data-type="canv-gauge" data-min-value="0" data-max-value="1023" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_1').setValue(v_y);}, 200);"></canvas>		
 		</div>	
 
 		<div id='d2' style="position:absolute; top:10px; left:670px; z-index:1">  
 			<p>&emsp;&emsp;&emsp;&emsp;Voltage B :  <span id="input0"></span></p>
-			<canvas id="an_	gauge_2" data-major-ticks="0 100 200 300 400 500 600 700 800 900 1000 1023" data-type="canv-gauge" data-min-value="0" data-max-value="1023" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_0').setValue(data_val0);}, 200);"></canvas>		
+			<canvas id="an_	gauge_2" data-major-ticks="0 100 200 300 400 500 600 700 800 900 1000 1023" data-type="canv-gauge" data-min-value="0" data-max-value="1023" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_0').setValue(v_b);}, 200);"></canvas>		
 		</div>	
 
 		<div id='d3' style="position:absolute; top:10px; left:1000px; z-index:1">  
 			<p>&emsp;&emsp;&emsp;&emsp;Fuel Level : <span id="input0"></span></p>
-			<canvas id="an_	gauge_3" data-major-ticks="0 100 200 300 400 500 600 700 800 900 1000 1023" data-type="canv-gauge" data-min-value="0" data-max-value="1023" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_0').setValue(data_val0);}, 200);"></canvas>		
+			<canvas id="an_	gauge_3" data-major-ticks="0 100 200 300 400 500 600 700 800 900 1000 1023" data-type="canv-gauge" data-min-value="0" data-max-value="1023" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_0').setValue(fuel);}, 200);"></canvas>		
 		</div>	
 
 		<div id='d4' style="position:absolute; top:300px; left:10px; z-index:1">  
 			<p>&emsp;&emsp;&emsp;&emsp;Current R : <span id="input1"></span></p>
-			<canvas id="an_gauge_4" data-major-ticks="0 100 200 300 400 500 600 700 800 900 1000 1023" data-type="canv-gauge" data-min-value="0" data-max-value="1023" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_1').setValue(data_val1);}, 200);"></canvas>		
+			<canvas id="an_gauge_4" data-major-ticks="0 100 200 300 400 500 600 700 800 900 1000 1023" data-type="canv-gauge" data-min-value="0" data-max-value="1023" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_1').setValue(i_r);}, 200);"></canvas>		
 		</div>	
 
 		<div id='d5' style="position:absolute; top:300px; left:340px; z-index:1">  
 			<p>&emsp;&emsp;&emsp;&emsp;Current Y : <span id="input0"></span></p>
-			<canvas id="an_	gauge_5" data-major-ticks="0 100 200 300 400 500 600 700 800 900 1000 1023" data-type="canv-gauge" data-min-value="0" data-max-value="1023" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_0').setValue(data_val0);}, 200);"></canvas>		
+			<canvas id="an_	gauge_5" data-major-ticks="0 100 200 300 400 500 600 700 800 900 1000 1023" data-type="canv-gauge" data-min-value="0" data-max-value="1023" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_0').setValue(i_y);}, 200);"></canvas>		
 		</div>	
 
 		<div id='d6' style="position:absolute; top:300px; left:670px; z-index:1">  
 			<p>&emsp;&emsp;&emsp;&emsp;Current B :  <span id="input1"></span></p>
-			<canvas id="an_gauge_6" data-major-ticks="0 100 200 300 400 500 600 700 800 900 1000 1023" data-type="canv-gauge" data-min-value="0" data-max-value="1023" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_1').setValue(data_val1);}, 200);"></canvas>		
+			<canvas id="an_gauge_6" data-major-ticks="0 100 200 300 400 500 600 700 800 900 1000 1023" data-type="canv-gauge" data-min-value="0" data-max-value="1023" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_1').setValue(i_b);}, 200);"></canvas>		
 		</div>	
 
 		<div id='d7' style="position:absolute; top:300px; left:1000px; z-index:1">  
@@ -93,22 +102,22 @@
 
 		<div id='d8' style="position:absolute; top:610px; left:10px; z-index:1">  
 			<p>&emsp;&emsp;Onboard Temperature  : <span id="input8"></span></p>
-			<canvas id="an_	gauge_8" data-major-ticks="-10 0 10 20 30 40 50 60 70 80 90" data-type="canv-gauge" data-min-value="-10" data-max-value="90" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_8').setValue(data_val8);}, 200);"></canvas>		
+			<canvas id="an_	gauge_8" data-major-ticks="-10 0 10 20 30 40 50 60 70 80 90" data-type="canv-gauge" data-min-value="-10" data-max-value="90" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_8').setValue(tempOnboard);}, 200);"></canvas>		
 		</div>	
 
 		<div id='d9' style="position:absolute; top:610px; left:340px; z-index:1">  
 			<p>&emsp;Engine oil Temperature  : <span id="input9"></span></p>
-			<canvas id="an_gauge_9" data-major-ticks="30 40 50 60 70 80 90 100 110 120 130 140" data-type="canv-gauge" data-min-value="30" data-max-value="140" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_9').setValue(data_val9);}, 200);"></canvas>		
+			<canvas id="an_gauge_9" data-major-ticks="30 40 50 60 70 80 90 100 110 120 130 140" data-type="canv-gauge" data-min-value="30" data-max-value="140" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_9').setValue(tempEngineOil);}, 200);"></canvas>		
 		</div>
 
 		<div id='d10' style="position:absolute; top:610px; left:670px; z-index:1">  
 			<p>&emsp;&emsp; Coolant Temperature : <span id="input1"></span></p>
-			<canvas id="an_gauge_10" data-major-ticks="0 100 200 300 400 500 600 700 800 900 1000 1023" data-type="canv-gauge" data-min-value="0" data-max-value="1023" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_1').setValue(data_val1);}, 200);"></canvas>		
+			<canvas id="an_gauge_10" data-major-ticks="0 100 200 300 400 500 600 700 800 900 1000 1023" data-type="canv-gauge" data-min-value="0" data-max-value="1023" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_1').setValue(tempCoolant);}, 200);"></canvas>		
 		</div>
 
 		<div id='d11' style="position:absolute; top:610px; left:1000px; z-index:1">  
 			<p>&emsp;&emsp;&emsp;&emsp;Vibration : <span id="input1"></span></p>
-			<canvas id="an_gauge_11" data-major-ticks="0 100 200 300 400 500 600 700 800 900 1000 1023" data-type="canv-gauge" data-min-value="0" data-max-value="1023" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_1').setValue(data_val1);}, 200);"></canvas>		
+			<canvas id="an_gauge_11" data-major-ticks="0 100 200 300 400 500 600 700 800 900 1000 1023" data-type="canv-gauge" data-min-value="0" data-max-value="1023" data-onready="setInterval( function() { Gauge.Collection.get('an_gauge_1').setValue(vibration);}, 200);"></canvas>		
 		</div>
 
 		

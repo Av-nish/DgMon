@@ -182,14 +182,20 @@ void loop()
 
 
 
-    // call functions 
+ 
     
-getTemperature(0);
-//getVoltage('y');
-//delay(600);
-//getVoltage('b');
-//delay(600);
 
+// int initialize = 5;
+// Serial.println("Initializing the Board Please Wait !!");
+
+// while (initialize --)
+// {
+//     getTemperature(0);
+//     getTemperature(1);
+//     getTemperature(2);
+//     getDcVoltage(1);
+//     getDcVoltage(2);
+// }
 
 
 }
@@ -197,20 +203,80 @@ getTemperature(0);
 // send the XML file containing analog value
 void XML_response(EthernetClient cl)
 {
-    int analog_val1;
-    int analog_val0;
     
     cl.print("<?xml version = \"1.0\" ?>");
     cl.print("<inputs>");
-    // read analog pin A1 and A0
-    analog_val1 = analogRead(1);
-    analog_val0 = analogRead(0);
-    cl.print("<analog1>");
-    cl.print(analog_val1);
-    cl.print("</analog1>"); 
-    cl.print("<analog0>");
-    cl.print(analog_val0);
-    cl.print("</analog0>"); 
+    
+    
+    float _tempOnboard = getTemperature(0);
+    cl.print("<tempOnboard>");
+    cl.print(_tempOnboard);
+    cl.print("</tempOnboard>"); 
+
+    float _tempCoolant = getTemperature(1);
+    cl.print("<tempCoolant>");
+    cl.print(_tempCoolant);
+    cl.print("</tempCoolant>"); 
+
+    float _tempEngineOil = getTemperature(2);
+    cl.print("<tempEngineOil>");
+    cl.print(_tempEngineOil);
+    cl.print("</tempEngineOil>"); 
+
+    float _dcV1 = getDcVoltage(1);
+    cl.print("<dcV1>");
+    cl.print(_dcV1);
+    cl.print("</dcV1>");
+
+    float _dcV2 = getDcVoltage(2);
+    cl.print("<dcV2>");
+    cl.print(_dcV2);
+    cl.print("</dcV2>");
+
+    float _v_r = getVoltage(r);
+    cl.print("<v_r>");
+    cl.print(_v_r);
+    cl.print("</v_r>");
+
+    float _v_y = getVoltage(y);
+    cl.print("<v_y>");
+    cl.print(_v_y);
+    cl.print("</v_y>");
+
+    float _v_b = getVoltage(b);
+    cl.print("<v_b>");
+    cl.print(_v_b);
+    cl.print("</v_b>");
+
+    int _fuelLevel = getFuelHeight();
+    cl.print("<fuel>");
+    cl.print(_fuelLevel);
+    cl.print("</fuel>");
+
+    double _i_r = getCurrent(r);
+    cl.print("<i_r>");
+    cl.print(_i_r);
+    cl.print("</i_r>");
+
+    double _i_y = getCurrent(y);
+    cl.print("<i_y>");
+    cl.print(_i_y);
+    cl.print("</i_y>");
+
+    double _i_b = getCurrent(b);
+    cl.print("<i_b>");
+    cl.print(_i_b);
+    cl.print("</i_b>");
+
+    //for pressure
+    //for rpm
+    // for co level
+
+    long _vibration = getVibration();
+    cl.print("<vibration>");
+    cl.print(_vibration);
+    cl.print("</vibration>");
+
     cl.print("</inputs>");
 }
 
