@@ -78,7 +78,7 @@ void setup()
    }
    Serial.println("SUCCESS - SD card initialized.");
    // check for index.htm file
-   if (!SD.exists("index.htm")) {
+   if (SD.exists("index.htm")) {
        Serial.println("ERROR - Can't find index.htm file!");
        return;  // can't find index file
    }
@@ -233,17 +233,17 @@ void XML_response(EthernetClient cl)
     cl.print(_dcV2);
     cl.print("</dcV2>");
 
-    float _v_r = getVoltage(r);
+    float _v_r = getVoltage('r');
     cl.print("<v_r>");
     cl.print(_v_r);
     cl.print("</v_r>");
 
-    float _v_y = getVoltage(y);
+    float _v_y = getVoltage('y');
     cl.print("<v_y>");
     cl.print(_v_y);
     cl.print("</v_y>");
 
-    float _v_b = getVoltage(b);
+    float _v_b = getVoltage('b');
     cl.print("<v_b>");
     cl.print(_v_b);
     cl.print("</v_b>");
@@ -253,17 +253,17 @@ void XML_response(EthernetClient cl)
     cl.print(_fuelLevel);
     cl.print("</fuel>");
 
-    double _i_r = getCurrent(r);
+    double _i_r = getCurrent('r');
     cl.print("<i_r>");
     cl.print(_i_r);
     cl.print("</i_r>");
 
-    double _i_y = getCurrent(y);
+    double _i_y = getCurrent('y');
     cl.print("<i_y>");
     cl.print(_i_y);
     cl.print("</i_y>");
 
-    double _i_b = getCurrent(b);
+    double _i_b = getCurrent('b');
     cl.print("<i_b>");
     cl.print(_i_b);
     cl.print("</i_b>");
