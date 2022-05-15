@@ -131,6 +131,7 @@ void loop()
                         client.println();
                         // send XML file containing input states
                         XML_response(client);
+                        Serial.println("\nXML Sent !!!!!");
                     }
                     else {  // web page request
                         // send rest of HTTP header
@@ -139,6 +140,7 @@ void loop()
                         client.println();
                         // send web page
                         webFile = SD.open("index.htm");        // open web page file
+                        Serial.println("\nFile Read !!!!");
                         if (webFile) {
                             while(webFile.available()) {
                                 client.write(webFile.read()); // send web page to client
@@ -190,16 +192,52 @@ void loop()
 void XML_response(EthernetClient cl)
 {
   
-  //float _tempOnboard = getTemperature(0);
-  float _tempOnboard = 35.35;
+//    float _v_r = getVoltage('r');
+//    float _v_y = getVoltage('y');
+//    float _v_b = getVoltage('b');
+//  double _i_r = getCurrent('r');
+//double _i_r = getCurrent('r');
+//double _i_r = getCurrent('r');
+
+
+    float _v_r = 231;
+    float _v_y = 232;  
+    float _v_b = 233;   
+    double _i_r = 5;
+    double _i_y = 6;
+    double _i_b = 7;
         
     cl.print("<?xml version = \"1.0\" ?>");
     cl.print("<inputs>");
 
-    cl.print("<tempOnboard>");
-    cl.print(_tempOnboard);
-    cl.print("</tempOnboard>"); 
-//
+    cl.print("<v_r>");
+    cl.print(_v_r);
+    cl.print("</v_r>");
+
+    cl.print("<v_y>");
+    cl.print(_v_y);
+    cl.print("</v_y>");
+
+    
+    cl.print("<v_b>");
+    cl.print(_v_b);
+    cl.print("</v_b>");
+
+    
+    cl.print("<i_r>");
+    cl.print(_i_r);
+    cl.print("</i_r>");
+
+    cl.print("<i_y>");
+    cl.print(_i_y);
+    cl.print("</i_y>");
+
+    cl.print("<i_b>");
+    cl.print(_i_b);
+    cl.print("</i_b>");
+
+ 
+
 //    //float _tempCoolant = 33.5;
 //    float _tempCoolant = getTemperature(1);
 //    cl.print("<tempCoolant>");
@@ -222,40 +260,14 @@ void XML_response(EthernetClient cl)
 //    cl.print(_dcV2);
 //    cl.print("</dcV2>");
 //
-//    float _v_r = getVoltage('r');
-//    cl.print("<v_r>");
-//    cl.print(_v_r);
-//    cl.print("</v_r>");
-//
-//    float _v_y = getVoltage('y');
-//    cl.print("<v_y>");
-//    cl.print(_v_y);
-//    cl.print("</v_y>");
-//
-//    float _v_b = getVoltage('b');
-//    cl.print("<v_b>");
-//    cl.print(_v_b);
-//    cl.print("</v_b>");
+
 //
 //    int _fuelLevel = getFuelHeight();
 //    cl.print("<fuel>");
 //    cl.print(_fuelLevel);
 //    cl.print("</fuel>");
 //
-//    double _i_r = getCurrent('r');
-//    cl.print("<i_r>");
-//    cl.print(_i_r);
-//    cl.print("</i_r>");
-//
-//    double _i_y = getCurrent('y');
-//    cl.print("<i_y>");
-//    cl.print(_i_y);
-//    cl.print("</i_y>");
-//
-//    double _i_b = getCurrent('b');
-//    cl.print("<i_b>");
-//    cl.print(_i_b);
-//    cl.print("</i_b>");
+
 //
 //    //for pressure
 //    //for rpm
